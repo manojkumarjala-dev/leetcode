@@ -25,9 +25,6 @@ class Solution {
         while (!q.isEmpty()) {
             int cur = q.poll();
             // early exit if we've reached the last square
-            if (cur == target) {
-                return steps[cur];
-            }
             // try all dice rolls 1 through 6
             for (int move = 1; move <= 6 && cur + move <= target; move++) {
                 int next = cur + move;
@@ -46,6 +43,6 @@ class Solution {
         }
 
 
-        return -1;
+        return steps[n*n];
     }
 }
