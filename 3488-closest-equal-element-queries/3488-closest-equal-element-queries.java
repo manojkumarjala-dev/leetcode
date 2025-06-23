@@ -25,7 +25,7 @@ class Solution {
             }
             else if(ceil!=null){
                 Integer last_idx = map.get(num).last(); 
-                int dist = nums.length-q+last_idx;
+                int dist = nums.length+q-last_idx;
                 ans.add(Math.min(dist, Math.min(ceil-q, q+(nums.length-ceil))));
             }
             else{
