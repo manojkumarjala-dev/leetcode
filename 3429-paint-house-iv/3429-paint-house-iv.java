@@ -3,8 +3,8 @@ class Solution {
 
         core idea is using symmetry and only 3 colors 
         max possible pairs are 6 such that both are not same
-        now for outer we have all the possibilities
-        but when u move one step inside
+        now for outer(1,n) we have all the possibilities
+        but when u move one step inside(2,n-1)
         the choices narrowed down to 3
         If outer is 01 -> inner can only be 10,20,12 so we take only min of those
 
@@ -26,7 +26,7 @@ class Solution {
             dp[0][idx] = cost[0][i] + cost[n - 1][j];
         }
 
-
+        long ans = Long.MAX_VALUE;
         for (int k = 1; k < n / 2; k++) {
             for (int curr = 0; curr < 6; curr++) {
                 int i = pairs[curr][0];           
@@ -50,7 +50,6 @@ class Solution {
         }
 
 
-        long ans = Long.MAX_VALUE;
         for (long val : dp[n / 2 - 1]) {
             ans = Math.min(ans, val);
         }
