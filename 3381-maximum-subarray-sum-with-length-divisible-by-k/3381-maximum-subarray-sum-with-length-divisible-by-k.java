@@ -4,16 +4,6 @@ class Solution {
         long[] prefix = new long[n + 1];
         long[] dp = new long[n + 1]; // dp[i] = max sum starting at i with len % k == 0
 
-        if (k == 1) {
-            long maxSum = Long.MIN_VALUE;
-            long currSum = 0;
-            for (int num : nums) {
-                currSum = Math.max(num, currSum + num);
-                maxSum = Math.max(maxSum, currSum);
-            }
-            return maxSum;
-        }
-
         // Step 1: build prefix sums
         for (int i = 0; i < n; i++) {
             prefix[i + 1] = prefix[i] + nums[i];
