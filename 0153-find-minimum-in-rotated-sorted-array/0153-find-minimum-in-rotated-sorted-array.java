@@ -1,24 +1,29 @@
 class Solution {
-    public int findMin(int[] nums) {
-
-        int low = 0, high = nums.length-1;
-        if(nums.length==2){
-            return Math.min(nums[0],nums[1]);
+    
+    public int findMin(int[] arr) {
+        int low = 0,high = arr.length-1;
+        int mid = low + (high - low) / 2;
+        
+         while (low < high) {
+             mid = low + (high - low) / 2;
+            if(arr[low]<arr[high]){
+            return arr[low];
         }
-
-        while(low<high){
-            int mid = low+ (high-low)/2;
-            if(nums[low]<nums[mid] && nums[mid]<nums[high]) return nums[low];
-
-            if(nums[low]<=nums[mid] && nums[high]<nums[mid]){
-                low = mid+1;
+            // Check if x is present at mid
+            if (arr[mid] >= arr[low]){
+                low = mid +1;
             }
-            else{
+                
+
+
+            else if (arr[mid] < arr[low]){
+                low = low+1;
                 high = mid;
             }
-        }
 
-        return nums[low];
-        
+    }
+
+    // If we reach here, then element was not present
+    return arr[low];
     }
 }
